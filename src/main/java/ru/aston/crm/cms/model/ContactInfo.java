@@ -7,26 +7,26 @@ import jakarta.persistence.*;
 public class ContactInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int contact_id;
-    private int customer_id;
+    private Long contact_id;
+    private Long customer_id;
     private String name;
     private String type;
     private String details;
     private boolean preferred;
 
-    public int getContact_id() {
+    public Long getContact_id() {
         return contact_id;
     }
 
-    public void setContact_id(int contact_id) {
+    public void setContact_id(Long contact_id) {
         this.contact_id = contact_id;
     }
 
-    public int getCustomer_id() {
+    public Long getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(Long customer_id) {
         this.customer_id = customer_id;
     }
 

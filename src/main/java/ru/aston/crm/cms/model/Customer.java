@@ -9,18 +9,18 @@ import java.sql.Timestamp;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String organisation;
     private String city;
     private String industry;
     private Timestamp created_at;
     private Timestamp updated_at;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -9,34 +9,34 @@ import java.util.Date;
 public class Interaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int interaction_id;
-    private int customer_id;
-    private int contact_id;
+    private Long interaction_id;
+    private Long customer_id;
+    private Long contact_id;
     private Date date;
     private String type;
     private String notes;
 
-    public int getInteraction_id() {
+    public Long getInteraction_id() {
         return interaction_id;
     }
 
-    public void setInteraction_id(int interaction_id) {
+    public void setInteraction_id(Long interaction_id) {
         this.interaction_id = interaction_id;
     }
 
-    public int getCustomer_id() {
+    public Long getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(Long customer_id) {
         this.customer_id = customer_id;
     }
 
-    public int getContact_id() {
+    public Long getContact_id() {
         return contact_id;
     }
 
-    public void setContact_id(int contact_id) {
+    public void setContact_id(Long contact_id) {
         this.contact_id = contact_id;
     }
 

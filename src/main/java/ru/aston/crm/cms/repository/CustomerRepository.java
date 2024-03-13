@@ -8,7 +8,7 @@ import ru.aston.crm.cms.model.Customer;
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    @Query("SELECT c FROM Customer c WHERE c.industry = ?")
-    List<Customer> findByIndustryName(String industryName);
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+    @Query("SELECT c FROM Customer c WHERE c.industry = ?1")
+    List<Customer> findByIndustry(String industry);
 }

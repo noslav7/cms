@@ -35,11 +35,13 @@ public class InteractionServiceImpl implements InteractionService {
     }
 
     @Override
+    @Transactional
     public void save(Interaction interaction) {
         interactionRepository.save(interaction);
     }
 
     @Override
+    @Transactional
     public void update(int id, Interaction updatedInteraction) {
         interactionRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Interaction not found for the id " + id));
@@ -48,6 +50,7 @@ public class InteractionServiceImpl implements InteractionService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         interactionRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Interaction not found for the id " + id));

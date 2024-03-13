@@ -2,8 +2,6 @@ package ru.aston.crm.cms.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
-
 @Entity
 @Table(name = "customers")
 public class Customer {
@@ -14,10 +12,6 @@ public class Customer {
     private String organisation;
     private String city;
     private String industry;
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
 
     public int getCustomerId() {
         return customerId;
@@ -49,21 +43,5 @@ public class Customer {
 
     public void setIndustry(String industry) {
         this.industry = industry;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

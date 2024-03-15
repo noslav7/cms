@@ -36,17 +36,19 @@ public class InteractionServiceImpl implements InteractionService {
 
     @Override
     @Transactional
-    public void save(Interaction interaction) {
+    public Interaction save(Interaction interaction) {
         interactionRepository.save(interaction);
+        return interaction;
     }
 
     @Override
     @Transactional
-    public void update(int id, Interaction updatedInteraction) {
+    public Interaction update(int id, Interaction updatedInteraction) {
         interactionRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Interaction not found for the id " + id));
         updatedInteraction.setContactId(id);
         interactionRepository.save(updatedInteraction);
+        return updatedInteraction;
     }
 
     @Override

@@ -36,17 +36,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void save(Customer customer) {
+    public Customer save(Customer customer) {
         customerRepository.save(customer);
+        return customer;
     }
 
     @Override
     @Transactional
-    public void update(int id, Customer updatedCustomer) {
+    public Customer update(int id, Customer updatedCustomer) {
         customerRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Customer not found for the id " + id));
         updatedCustomer.setCustomerId(id);
         customerRepository.save(updatedCustomer);
+        return updatedCustomer;
     }
 
     @Override

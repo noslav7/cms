@@ -8,7 +8,7 @@ public interface CustomerService {
     List<Customer> findAll();
     Customer findById(int id);
     List<Customer> findByIndustry(String industry);
-    void save(Customer customer);
-    void update(int id, Customer updatedCustomer);
+    Customer save(Customer customer);
+    Customer update(int id, Customer updatedCustomer);
     void delete(int id);
 }

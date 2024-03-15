@@ -36,17 +36,19 @@ public class ContactInfoServiceImpl implements ContactInfoService {
 
     @Override
     @Transactional
-    public void save(ContactInfo newContactInfo) {
+    public ContactInfo save(ContactInfo newContactInfo) {
         contactInfoRepository.save(newContactInfo);
+        return newContactInfo;
     }
 
     @Override
     @Transactional
-    public void update(int id, ContactInfo updatedContactInfo) {
+    public ContactInfo update(int id, ContactInfo updatedContactInfo) {
         contactInfoRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("ContactInfo not found for the id " + id));
         updatedContactInfo.setContactId(id);
         contactInfoRepository.save(updatedContactInfo);
+        return updatedContactInfo;
     }
 
     @Override

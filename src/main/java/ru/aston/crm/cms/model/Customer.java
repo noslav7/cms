@@ -1,16 +1,22 @@
 package ru.aston.crm.cms.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "customers")
+@Schema(description = "Details about the customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
+    @Schema(description = "The unique ID of the customer")
     private int customerId;
+    @Schema(description = "The name of the organisation (customer)")
     private String organisation;
+    @Schema(description = "The customer's location")
     private String city;
+    @Schema(description = "The customer's main industry")
     private String industry;
 
     public int getCustomerId() {

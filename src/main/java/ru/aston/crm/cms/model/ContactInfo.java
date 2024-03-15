@@ -1,19 +1,27 @@
 package ru.aston.crm.cms.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "contacts_info")
+@Schema(description = "Information about a contact")
 public class ContactInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_id")
+    @Schema(description = "The unique ID of the contact")
     private int contactId;
     @Column(name = "customer_id")
+    @Schema(description = "The ID of the contact's organisation")
     private int customerId;
+    @Schema(description = "Name of the contact (preferably full name)")
     private String name;
+    @Schema(description = "Type of the contact information (tel.№, mobile№, email et. al.")
     private String type;
+    @Schema(description = "Contact information")
     private String details;
+    @Schema(description = "Is this the preferred mean of communication with the customer?")
     private boolean preferred;
 
     public int getContactId() {

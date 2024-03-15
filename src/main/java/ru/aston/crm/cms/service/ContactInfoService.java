@@ -8,7 +8,7 @@ public interface ContactInfoService {
     List<ContactInfo> findAll();
     ContactInfo findById(int id);
     List<ContactInfo> findByCustomerId(int customerId);
-    void save(ContactInfo newContactInfo);
-    void update(int id, ContactInfo updatedContactInfo);
+    ContactInfo save(ContactInfo newContactInfo);
+    ContactInfo update(int id, ContactInfo updatedContactInfo);
     void delete(int id);
 }

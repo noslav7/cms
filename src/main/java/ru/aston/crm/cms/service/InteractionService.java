@@ -8,7 +8,7 @@ public interface InteractionService {
     List<Interaction> findAll();
     Interaction findById(int id);
     List<Interaction> findByCustomerId(int customerId);
-    void save(Interaction interaction);
-    void update(int id, Interaction updatedInteraction);
+    Interaction save(Interaction interaction);
+    Interaction update(int id, Interaction updatedInteraction);
     void delete(int id);
 }

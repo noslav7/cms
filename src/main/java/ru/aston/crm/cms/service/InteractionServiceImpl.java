@@ -10,7 +10,7 @@ import ru.aston.crm.cms.repository.InteractionRepository;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class InteractionServiceImpl implements InteractionService {
     private final InteractionRepository interactionRepository;
     private final KafkaTemplate<String, String> kafkaTemplate;
@@ -41,6 +41,7 @@ public class InteractionServiceImpl implements InteractionService {
     }
 
     @Override
+    @Transactional
     public Interaction save(Interaction interaction) {
         kafkaTemplate.send("cms", "SAVE INTERACTION: " +
                 interaction.getInteractionId() + " " + interaction.getCustomerId() + " " +
@@ -51,6 +52,7 @@ public class InteractionServiceImpl implements InteractionService {
     }
 
     @Override
+    @Transactional
     public Interaction update(int id, Interaction updatedInteraction) {
         interactionRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Interaction not found for the id " + id));
@@ -64,6 +66,7 @@ public class InteractionServiceImpl implements InteractionService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         interactionRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Interaction not found for the id " + id));

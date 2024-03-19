@@ -10,7 +10,7 @@ import ru.aston.crm.cms.repository.CustomerRepository;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final KafkaTemplate<String, String> kafkaTemplate;
@@ -41,6 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public Customer save(Customer customer) {
         kafkaTemplate.send("cms", "SAVE CUSTOMER: " + customer.getCustomerId() + " " +
                 customer.getOrganisation() + " " + customer.getCity() + " " +
@@ -50,6 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public Customer update(int id, Customer updatedCustomer) {
         customerRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Customer not found for the id " + id));
@@ -62,6 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         customerRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Customer not found for the id " + id));

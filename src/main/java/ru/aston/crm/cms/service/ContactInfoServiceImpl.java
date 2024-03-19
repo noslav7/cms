@@ -10,7 +10,7 @@ import ru.aston.crm.cms.repository.ContactInfoRepository;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class ContactInfoServiceImpl implements ContactInfoService {
     private final ContactInfoRepository contactInfoRepository;
     private final KafkaTemplate<String, String> kafkaTemplate;
@@ -41,6 +41,7 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     }
 
     @Override
+    @Transactional
     public ContactInfo save(ContactInfo newContactInfo) {
         kafkaTemplate.send("cms", "UPDATE CONTACT INFO: " +
                 newContactInfo.getContactId() + " " + newContactInfo.getCustomerId() + " " +
@@ -51,6 +52,7 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     }
 
     @Override
+    @Transactional
     public ContactInfo update(int id, ContactInfo updatedContactInfo) {
         contactInfoRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("ContactInfo not found for the id " + id));
@@ -64,6 +66,7 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         contactInfoRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("ContactInfo not found for the id " + id));

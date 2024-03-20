@@ -65,7 +65,7 @@ public class InteractionController {
                             content = @Content(array = @ArraySchema(schema = @Schema(implementation = Interaction.class)))),
                     @ApiResponse(description = "Invalid input", responseCode = "400")
             })
-    @GetMapping("/{customer_id}")
+    @GetMapping("/customers/{customer_id}")
     public ResponseEntity<List<Interaction>> getByCustomerId(
             @Parameter(description = "Customer ID", required = true)
             @PathVariable int customer_id) {

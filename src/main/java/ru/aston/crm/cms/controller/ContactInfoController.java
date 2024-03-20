@@ -65,7 +65,7 @@ public class ContactInfoController {
                             content = @Content(array = @ArraySchema(schema = @Schema(implementation = ContactInfo.class)))),
                     @ApiResponse(description = "Invalid input", responseCode = "400")
             })
-    @GetMapping("/{customer_id}")
+    @GetMapping("/customers/{customer_id}")
     public ResponseEntity<List<ContactInfo>> getByCustomerId(
             @Parameter(description = "Customer ID", required = true) @PathVariable int customer_id) {
         List<ContactInfo> contactInfos = contactInfoService.findByCustomerId(customer_id);

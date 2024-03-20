@@ -37,7 +37,8 @@ public class CustomerController {
             })
     @PostMapping
     public ResponseEntity<Customer> createCustomer(
-            @Parameter(description = "A customer object to be stored in a database table", required = true)
+            @Parameter(description = "A customer object to be stored in a database table",
+                    required = true)
             @RequestBody Customer customer) {
         Customer createdCustomer = customerService.save(customer);
         return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
@@ -46,7 +47,7 @@ public class CustomerController {
     @Operation(
             summary = "Get Customer by Id",
             responses = {
-                    @ApiResponse(description = "Customer retrieved", responseCode = "201",
+                    @ApiResponse(description = "Customer retrieved", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = Customer.class))),
                     @ApiResponse(description = "Invalid input", responseCode = "400")
             })
@@ -64,7 +65,7 @@ public class CustomerController {
                             content = @Content(array = @ArraySchema(schema = @Schema(implementation = Customer.class)))),
                     @ApiResponse(description = "Invalid input", responseCode = "400")
             })
-    @GetMapping("/{industry}")
+    @GetMapping("/industry/{industry}")
     public ResponseEntity<List<Customer>> getByIndustryName(
             @Parameter(description = "Customer's industry", required = true) @PathVariable String industry) {
         List<Customer> customers = customerService.findByIndustry(industry);
@@ -87,7 +88,7 @@ public class CustomerController {
     @Operation(
             summary = "Updates an existing Customer by Id",
             responses = {
-                    @ApiResponse(description = "Customer updated", responseCode = "201",
+                    @ApiResponse(description = "Customer updated", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = Customer.class))),
                     @ApiResponse(description = "Invalid input", responseCode = "400")
             })
@@ -96,7 +97,11 @@ public class CustomerController {
             @Parameter(description = "ID of a customer to update", required = true) @PathVariable int id,
             @Parameter(description = "Updated customer", required = true) @RequestBody Customer customerDetails) {
         Customer updatedCustomer = customerService.update(id, customerDetails);
-        return ResponseEntity.ok(updatedCustomer);
+        if (updatedCustomer != null) {
+            return ResponseEntity.ok(updatedCustomer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Operation(summary = "Deletes an existing Customer by Id")

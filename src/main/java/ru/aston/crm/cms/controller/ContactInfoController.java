@@ -52,7 +52,8 @@ public class ContactInfoController {
             })
     @GetMapping("/{id}")
     public ResponseEntity<ContactInfo> getContactInfoById(
-            @Parameter(description = "Contact information ID to retrieve", required = true) @PathVariable int id) {
+            @Parameter(description = "Contact information ID to retrieve", required = true)
+            @PathVariable int id) {
         ContactInfo contactInfo = contactInfoService.findById(id);
         return ResponseEntity.ok(contactInfo);
     }

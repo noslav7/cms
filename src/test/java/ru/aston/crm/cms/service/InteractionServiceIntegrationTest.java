@@ -24,16 +24,12 @@ import static org.mockito.Mockito.verify;
 @EmbeddedKafka(partitions = 1, topics = {"cms"})
 @Transactional
 public class InteractionServiceIntegrationTest {
-
     @Autowired
     private InteractionService interactionService;
-
     @Autowired
     private InteractionRepository interactionRepository;
-
     @MockBean
     private KafkaTemplate<String, String> kafkaTemplate;
-
     private Interaction savedInteraction;
 
     @BeforeEach

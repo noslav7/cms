@@ -36,14 +36,14 @@ public class ContactInfoServiceImpl implements ContactInfoService {
 
     @Override
     public List<ContactInfo> findByCustomerId(int customerId) {
-        kafkaTemplate.send("cms", "FIND CONTACT INFO BY CUSTOMER ID: " + customerId);
+        kafkaTemplate.send("cms", "FIND CONTACT INFOS BY CUSTOMER ID: " + customerId);
         return contactInfoRepository.findByCustomerId(customerId);
     }
 
     @Override
     @Transactional
     public ContactInfo save(ContactInfo newContactInfo) {
-        kafkaTemplate.send("cms", "UPDATE CONTACT INFO: " +
+        kafkaTemplate.send("cms", "SAVE CONTACT INFO: " +
                 newContactInfo.getContactId() + " " + newContactInfo.getCustomerId() + " " +
                 newContactInfo.getName() + " " + newContactInfo.getType() + " " +
                 newContactInfo.getDetails() + " " + newContactInfo.isPreferred());

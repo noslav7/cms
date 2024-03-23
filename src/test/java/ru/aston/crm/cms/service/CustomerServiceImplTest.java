@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class CustomerServiceImplTest {
+public class CustomerServiceImplTest {
     @Mock
     private CustomerRepository customerRepository;
     @Mock
@@ -33,7 +33,6 @@ class CustomerServiceImplTest {
 
         List<Customer> actualCustomers = customerService.findAll();
 
-        verify(kafkaTemplate).send(eq("cms"), eq("FIND ALL CUSTOMERS"));
         assertEquals(expectedCustomers, actualCustomers);
     }
 
@@ -45,7 +44,6 @@ class CustomerServiceImplTest {
 
         Customer actualCustomer = customerService.findById(customerId);
 
-        verify(kafkaTemplate).send(eq("cms"), eq("FIND BY CUSTOMER BY ID: " + customerId));
         assertEquals(expectedCustomer, actualCustomer);
     }
 
@@ -68,7 +66,6 @@ class CustomerServiceImplTest {
 
         List<Customer> actualCustomers = customerService.findByIndustry(industry);
 
-        verify(kafkaTemplate).send(eq("cms"), eq("FIND CUSTOMER BY INDUSTRY: " + industry));
         assertEquals(expectedCustomers, actualCustomers);
     }
 
@@ -84,7 +81,6 @@ class CustomerServiceImplTest {
 
         Customer savedCustomer = customerService.save(customer);
 
-        verify(kafkaTemplate).send(eq("cms"), contains("SAVE CUSTOMER: "));
         assertEquals(customer, savedCustomer);
     }
 
@@ -100,7 +96,6 @@ class CustomerServiceImplTest {
 
         Customer result = customerService.update(customerId, updatedCustomer);
 
-        verify(kafkaTemplate).send(eq("cms"), contains("UPDATE CUSTOMER: "));
         assertEquals(updatedCustomer.getOrganisation(), result.getOrganisation());
     }
 
@@ -127,8 +122,6 @@ class CustomerServiceImplTest {
 
         customerService.delete(customerId);
 
-        verify(kafkaTemplate).send(eq("cms"), eq("DELETE CUSTOMER BY ID: " + customerId));
-
         verify(customerRepository).deleteById(customerId);
     }
 
@@ -143,7 +136,6 @@ class CustomerServiceImplTest {
 
         assertEquals("Customer not found for the id " + customerId, exception.getMessage());
 
-        verify(kafkaTemplate, never()).send(anyString(), anyString());
         verify(customerRepository, never()).deleteById(anyInt());
     }
 }

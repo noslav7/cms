@@ -43,12 +43,12 @@ public class InteractionServiceImpl implements InteractionService {
     @Override
     @Transactional
     public Interaction save(Interaction interaction) {
+        Interaction savedInteraction = interactionRepository.save(interaction);
         kafkaTemplate.send("cms", "SAVE INTERACTION: " +
                 interaction.getInteractionId() + " " + interaction.getCustomerId() + " " +
                 interaction.getContactId() + " " + interaction.getDate() + " " +
                 interaction.getType() + " " + interaction.getNotes());
-        interactionRepository.save(interaction);
-        return interaction;
+        return savedInteraction;
     }
 
     @Override
@@ -60,9 +60,7 @@ public class InteractionServiceImpl implements InteractionService {
                 updatedInteraction.getInteractionId() + " " + updatedInteraction.getCustomerId() + " " +
                 updatedInteraction.getContactId() + " " + updatedInteraction.getDate() + " " +
                 updatedInteraction.getType() + " " + updatedInteraction.getNotes());
-        updatedInteraction.setContactId(id);
-        interactionRepository.save(updatedInteraction);
-        return updatedInteraction;
+        return interactionRepository.save(updatedInteraction);
     }
 
     @Override

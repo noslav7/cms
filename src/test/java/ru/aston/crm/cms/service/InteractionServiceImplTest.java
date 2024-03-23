@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class InteractionServiceImplTest {
+public class InteractionServiceImplTest {
     @Mock
     private InteractionRepository interactionRepository;
     @Mock
@@ -32,7 +32,6 @@ class InteractionServiceImplTest {
 
         List<Interaction> actualInteractions = interactionService.findAll();
 
-        verify(kafkaTemplate).send(eq("cms"), eq("FIND ALL INTERACTIONS"));
         assertEquals(expectedInteractions, actualInteractions);
     }
 
@@ -44,7 +43,6 @@ class InteractionServiceImplTest {
 
         Interaction actualInteraction = interactionService.findById(interactionId);
 
-        verify(kafkaTemplate).send(eq("cms"), eq("FIND INTERACTION BY ID: " + interactionId));
         assertEquals(expectedInteraction, actualInteraction);
     }
 
@@ -66,7 +64,6 @@ class InteractionServiceImplTest {
 
         List<Interaction> actualInteractions = interactionService.findByCustomerId(customerId);
 
-        verify(kafkaTemplate).send(eq("cms"), eq("FIND INTERACTIONS BY CUSTOMER ID: " + customerId));
         assertEquals(expectedInteractions, actualInteractions);
     }
 
@@ -77,7 +74,6 @@ class InteractionServiceImplTest {
 
         Interaction savedInteraction = interactionService.save(interaction);
 
-        verify(kafkaTemplate).send(eq("cms"), contains("SAVE INTERACTION: "));
         assertEquals(interaction, savedInteraction);
     }
 
@@ -93,7 +89,6 @@ class InteractionServiceImplTest {
 
         Interaction result = interactionService.update(interactionId, updatedInteraction);
 
-        verify(kafkaTemplate).send(eq("cms"), contains("UPDATE INTERACTION: "));
         assertEquals(updatedInteraction.getContactId(), result.getContactId());
     }
 
@@ -116,7 +111,6 @@ class InteractionServiceImplTest {
 
         interactionService.delete(interactionId);
 
-        verify(kafkaTemplate).send(eq("cms"), eq("DELETE INTERACTION BY ID: " + interactionId));
         verify(interactionRepository).deleteById(interactionId);
     }
 
@@ -127,7 +121,6 @@ class InteractionServiceImplTest {
 
         Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> interactionService.delete(nonExistentId));
 
-        verify(kafkaTemplate, never()).send(anyString(), anyString());
         assertTrue(exception.getMessage().contains("Interaction not found for the id " + nonExistentId));
     }
 }

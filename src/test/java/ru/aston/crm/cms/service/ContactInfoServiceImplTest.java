@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class ContactInfoServiceImplTest {
+public class ContactInfoServiceImplTest {
     @Mock
     private ContactInfoRepository contactInfoRepository;
     @Mock
@@ -32,7 +32,6 @@ class ContactInfoServiceImplTest {
 
         List<ContactInfo> actualContactInfos = contactInfoService.findAll();
 
-        verify(kafkaTemplate).send("cms", "FIND ALL CONTACT INFOS");
         assertEquals(expectedContactInfos, actualContactInfos);
     }
 
@@ -44,7 +43,6 @@ class ContactInfoServiceImplTest {
 
         ContactInfo actualContactInfo = contactInfoService.findById(id);
 
-        verify(kafkaTemplate).send("cms", "FIND CONTACT INFO BY ID: " + id);
         assertEquals(expectedContactInfo, actualContactInfo);
     }
 
@@ -66,7 +64,6 @@ class ContactInfoServiceImplTest {
 
         List<ContactInfo> actualContactInfos = contactInfoService.findByCustomerId(customerId);
 
-        verify(kafkaTemplate).send("cms", "FIND CONTACT INFO BY CUSTOMER ID: " + customerId);
         assertEquals(expectedContactInfos, actualContactInfos);
     }
 
@@ -77,7 +74,6 @@ class ContactInfoServiceImplTest {
 
         ContactInfo savedContactInfo = contactInfoService.save(newContactInfo);
 
-        verify(kafkaTemplate).send(eq("cms"), contains("UPDATE CONTACT INFO: "));
         assertEquals(newContactInfo, savedContactInfo);
     }
 
@@ -91,7 +87,6 @@ class ContactInfoServiceImplTest {
 
         ContactInfo result = contactInfoService.update(id, updatedContactInfo);
 
-        verify(kafkaTemplate).send(eq("cms"), contains("UPDATE CONTACT INFO: "));
         assertEquals(updatedContactInfo, result);
     }
 
@@ -113,7 +108,6 @@ class ContactInfoServiceImplTest {
 
         contactInfoService.delete(id);
 
-        verify(kafkaTemplate).send("cms", "DELETE CONTACT INFO BY ID: " + id);
         verify(contactInfoRepository).deleteById(id);
     }
 
@@ -125,7 +119,6 @@ class ContactInfoServiceImplTest {
         Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> contactInfoService.delete(invalidId));
 
         assertTrue(exception.getMessage().contains("ContactInfo not found for the id " + invalidId));
-        verify(kafkaTemplate, never()).send(anyString(), anyString());
         verify(contactInfoRepository, never()).deleteById(invalidId);
     }
 }

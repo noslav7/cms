@@ -13,5 +13,5 @@ import ru.aston.crm.cms.service.InteractionServiceImplTest;
                 CustomerServiceImplTest.class,
                 InteractionServiceImplTest.class,
         })
-public class UnitTests {
+public class UnitTestsSuite {
 }

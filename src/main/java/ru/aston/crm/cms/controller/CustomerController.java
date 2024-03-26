@@ -65,7 +65,7 @@ public class CustomerController {
                             content = @Content(array = @ArraySchema(schema = @Schema(implementation = Customer.class)))),
                     @ApiResponse(description = "Invalid input", responseCode = "400")
             })
-    @GetMapping("/industry/{industry}")
+    @GetMapping("/industries/{industry}")
     public ResponseEntity<List<Customer>> getByIndustryName(
             @Parameter(description = "Customer's industry", required = true) @PathVariable String industry) {
         List<Customer> customers = customerService.findByIndustry(industry);

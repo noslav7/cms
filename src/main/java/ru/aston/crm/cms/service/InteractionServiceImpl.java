@@ -44,8 +44,7 @@ public class InteractionServiceImpl implements InteractionService {
     @Transactional
     public Interaction save(Interaction interaction) {
         Interaction savedInteraction = interactionRepository.save(interaction);
-        kafkaTemplate.send("cms", "SAVE INTERACTION: " +
-                interaction.getInteractionId() + " " + interaction.getCustomerId() + " " +
+        kafkaTemplate.send("cms", "SAVE INTERACTION: " + interaction.getCustomerId() + " " +
                 interaction.getContactId() + " " + interaction.getDate() + " " +
                 interaction.getType() + " " + interaction.getNotes());
         return savedInteraction;

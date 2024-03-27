@@ -19,13 +19,13 @@ INSERT INTO contacts_info(CUSTOMER_ID, NAME, TYPE, DETAILS, PREFERRED) VALUES(9,
 INSERT INTO contacts_info(CUSTOMER_ID, NAME, TYPE, DETAILS, PREFERRED) VALUES(7, 'Petrov Sergei', 'telephone', '8495999888777', true);
 INSERT INTO contacts_info(CUSTOMER_ID, NAME, TYPE, DETAILS, PREFERRED) VALUES(7, 'Petrov Sergei', 'email', 'petrov@rfyaz.ru', false);
 
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(1, 1, 2024-01-10, 'payment', 'received 2_500_000');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(1, 1, 2024-01-15, 'shipment', '30 kW');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(1, 3, 2024-02-20, 'shipment', '30 kW');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, 2024-03-02, 'negotiations', 'discussing future deals');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(3, 5, 2024-03-03, 'discussion at equipment exhibition', 'product demonstration');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, 2024-03-10, 'shipment', '50 kW');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, 2024-03-15, 'shipment', '30 kW');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, 2024-03-20, 'shipment', '30 kW');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, 2024-03-25, 'shipment', '100 kW');
-INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, 2024-03-27, 'payment', 'received_10_000_000');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(1, 1, '2024-01-10', 'payment', 'received 2_500_000');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(1, 1, '2024-01-15', 'shipment', '30 kW');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(1, 3, '2024-02-20', 'shipment', '30 kW');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, '2024-03-02', 'negotiations', 'discussing future deals');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(3, 5, '2024-03-03', 'discussion at equipment exhibition', 'product demonstration');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, '2024-03-10', 'shipment', '50 kW');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, '2024-03-15', 'shipment', '30 kW');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, '2024-03-20', 'shipment', '30 kW');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, '2024-03-25', 'shipment', '100 kW');
+INSERT INTO interactions(CUSTOMER_ID, CONTACT_ID, DATE, TYPE, NOTES) VALUES(2, 4, '2024-03-27', 'payment', 'received_10_000_000');

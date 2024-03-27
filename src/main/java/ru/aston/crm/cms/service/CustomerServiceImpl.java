@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public Customer save(Customer customer) {
-        kafkaTemplate.send("cms", "SAVE CUSTOMER: " + customer.getCustomerId() + " " +
+        kafkaTemplate.send("cms", "SAVE CUSTOMER: "  +
                 customer.getOrganisation() + " " + customer.getCity() + " " +
                 customer.getIndustry());
         customerRepository.save(customer);

@@ -43,8 +43,7 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     @Override
     @Transactional
     public ContactInfo save(ContactInfo newContactInfo) {
-        kafkaTemplate.send("cms", "SAVE CONTACT INFO: " +
-                newContactInfo.getContactId() + " " + newContactInfo.getCustomerId() + " " +
+        kafkaTemplate.send("cms", "SAVE CONTACT INFO: " + newContactInfo.getCustomerId() + " " +
                 newContactInfo.getName() + " " + newContactInfo.getType() + " " +
                 newContactInfo.getDetails() + " " + newContactInfo.isPreferred());
         contactInfoRepository.save(newContactInfo);

@@ -82,7 +82,7 @@ public class InteractionServiceIntegrationTest {
         Interaction saved = interactionService.save(newInteraction);
 
         assertThat(saved.getCustomerId()).isEqualTo(2);
-        verify(kafkaTemplate).send("cms", "SAVE INTERACTION: " + " 2 2 " +
+        verify(kafkaTemplate).send("cms", "SAVE INTERACTION: " + "2 2 " +
                 saved.getDate() + " Call " + saved.getNotes());
     }
 

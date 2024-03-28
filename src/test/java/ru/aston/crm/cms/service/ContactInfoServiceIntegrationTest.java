@@ -86,7 +86,7 @@ public class ContactInfoServiceIntegrationTest {
         assertThat(saved).isNotNull();
         assertThat(saved.getName()).isEqualTo("Jane Doe");
         verify(kafkaTemplate).send(eq("cms"), argThat(argument ->
-                argument.matches("SAVE CONTACT INFO: \\d+ " + saved.getCustomerId() + " " +
+                argument.matches("SAVE CONTACT INFO: " + saved.getCustomerId() + " " +
                         Pattern.quote(saved.getName()) + " " + Pattern.quote(saved.getType()) + " " +
                         Pattern.quote(saved.getDetails()) + " " + saved.isPreferred())));
     }

@@ -1,5 +1,6 @@
 package ru.aston.crm.cms.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -24,6 +25,7 @@ public class Interaction {
     @JsonProperty("contact_id")
     private int contactId;
     @Schema(description = "Date of the interaction")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("date")
     private Date date;
     @Schema(description = "E.g. phone or email communication, purchase application etc.")
@@ -79,5 +81,17 @@ public class Interaction {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public String toString() {
+        return "Interaction{" +
+                "interactionId=" + interactionId +
+                ", customerId=" + customerId +
+                ", contactId=" + contactId +
+                ", date=" + date +
+                ", type='" + type + '\'' +
+                ", notes='" + notes + '\'' +
+                '}';
     }
 }

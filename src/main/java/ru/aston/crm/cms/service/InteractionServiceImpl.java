@@ -55,8 +55,7 @@ public class InteractionServiceImpl implements InteractionService {
     public Interaction update(int id, Interaction updatedInteraction) {
         interactionRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Interaction not found for the id " + id));
-        kafkaTemplate.send("cms", "UPDATE INTERACTION: " +
-                updatedInteraction.getInteractionId() + " " + updatedInteraction.getCustomerId() + " " +
+        kafkaTemplate.send("cms", "UPDATE INTERACTION: " + updatedInteraction.getCustomerId() + " " +
                 updatedInteraction.getContactId() + " " + updatedInteraction.getDate() + " " +
                 updatedInteraction.getType() + " " + updatedInteraction.getNotes());
         return interactionRepository.save(updatedInteraction);

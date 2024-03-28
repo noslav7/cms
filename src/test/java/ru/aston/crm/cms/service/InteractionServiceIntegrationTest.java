@@ -82,7 +82,8 @@ public class InteractionServiceIntegrationTest {
         Interaction saved = interactionService.save(newInteraction);
 
         assertThat(saved.getCustomerId()).isEqualTo(2);
-        verify(kafkaTemplate).send("cms", "SAVE INTERACTION: " + saved.getInteractionId() + " 2 2 " + saved.getDate() + " Call " + saved.getNotes());
+        verify(kafkaTemplate).send("cms", "SAVE INTERACTION: " + " 2 2 " +
+                saved.getDate() + " Call " + saved.getNotes());
     }
 
     @Test
@@ -92,7 +93,8 @@ public class InteractionServiceIntegrationTest {
         Interaction updated = interactionService.update(savedInteraction.getInteractionId(), savedInteraction);
 
         assertThat(updated.getNotes()).isEqualTo("Updated note");
-        verify(kafkaTemplate).send("cms", "UPDATE INTERACTION: " + updated.getInteractionId() + " " + updated.getCustomerId() + " " + updated.getContactId() + " " + updated.getDate() + " " + updated.getType() + " Updated note");
+        verify(kafkaTemplate).send("cms", "UPDATE INTERACTION: " + updated.getCustomerId() + " " +
+                updated.getContactId() + " " + updated.getDate() + " " + updated.getType() + " Updated note");
     }
 
     @Test

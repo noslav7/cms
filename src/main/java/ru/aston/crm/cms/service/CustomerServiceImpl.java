@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public Customer save(Customer customer) {
-        kafkaTemplate.send("cms", "SAVE CUSTOMER: "  +
+        kafkaTemplate.send("cms", "SAVE CUSTOMER: " +
                 customer.getOrganisation() + " " + customer.getCity() + " " +
                 customer.getIndustry());
         customerRepository.save(customer);
@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer update(int id, Customer updatedCustomer) {
         customerRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("Customer not found for the id " + id));
-        kafkaTemplate.send("cms", "UPDATE CUSTOMER: " + updatedCustomer.getCustomerId() + " " +
+        kafkaTemplate.send("cms", "UPDATE CUSTOMER: " +
                 updatedCustomer.getOrganisation() + " " + updatedCustomer.getCity() + " " +
                 updatedCustomer.getIndustry());
         updatedCustomer.setCustomerId(id);

@@ -77,7 +77,9 @@ public class CustomerServiceIntegrationTest {
 
         assertThat(saved).isNotNull();
         assertThat(saved.getOrganisation()).isEqualTo("NewCorp");
-        verify(kafkaTemplate).send(eq("cms"), contains("SAVE CUSTOMER:"));
+        verify(kafkaTemplate).send(eq("cms"), contains("SAVE CUSTOMER: " +
+                newCustomer.getOrganisation() + " " + newCustomer.getCity() + " " +
+                newCustomer.getIndustry()));
     }
 
     @Test

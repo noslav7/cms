@@ -99,8 +99,7 @@ public class ContactInfoServiceIntegrationTest {
 
         assertThat(updated.getName()).isEqualTo("Updated Name");
         verify(kafkaTemplate).send("cms", "UPDATE CONTACT INFO: " +
-                updated.getContactId() + " " + updated.getCustomerId() + " " +
-                updated.getName() + " " + updated.getType() + " " +
+                updated.getCustomerId() + " " + updated.getName() + " " + updated.getType() + " " +
                 updated.getDetails() + " " + updated.isPreferred());
     }
 

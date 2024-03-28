@@ -55,8 +55,7 @@ public class ContactInfoServiceImpl implements ContactInfoService {
     public ContactInfo update(int id, ContactInfo updatedContactInfo) {
         contactInfoRepository.findById(id)
                 .orElseThrow(() -> new IndexOutOfBoundsException("ContactInfo not found for the id " + id));
-        kafkaTemplate.send("cms", "UPDATE CONTACT INFO: " +
-                updatedContactInfo.getContactId() + " " + updatedContactInfo.getCustomerId() + " " +
+        kafkaTemplate.send("cms", "UPDATE CONTACT INFO: " + updatedContactInfo.getCustomerId() + " " +
                 updatedContactInfo.getName() + " " + updatedContactInfo.getType() + " " +
                 updatedContactInfo.getDetails() + " " + updatedContactInfo.isPreferred());
         updatedContactInfo.setContactId(id);

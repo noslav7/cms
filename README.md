@@ -6,6 +6,7 @@ https://github.com/noslav7/stub
 JSONs for testing (e.g using postman)
 
 POST      localhost:8080/cms/customers
+
  {
     "organisation": "SvarTechInvest",
     "city": "Saint-Petersburg",
@@ -34,6 +35,7 @@ POST      localhost:8080/cms/customers
   GET      localhost:8080/cms/customers
 
   PUT      localhost:8080/cms/customers/1
+  
   {
     "organisation": "STI",
     "city": "Saint-Petersburg",
@@ -47,6 +49,7 @@ POST      localhost:8080/cms/customers
 
 
   POST      localhost:8080/cms/contacts
+  
   {
     "customer_id": 1,
     "name": "Ivanov Dmitriy",
@@ -54,6 +57,7 @@ POST      localhost:8080/cms/customers
     "details": "ivanov@svartech.ru",
     "preferred": true
   }
+  
   {
     "customer_id": 1,
     "name": "Arsentev Petr",
@@ -61,6 +65,7 @@ POST      localhost:8080/cms/customers
     "details": "rpa@svartech.ru",
     "preferred": false
   }
+  
   {
     "customer_id": 2,
     "name": "Ezdakov Yuriy",
@@ -68,6 +73,7 @@ POST      localhost:8080/cms/customers
     "details": "83437654321",
     "preferred": true
   }
+  
   {
     "customer_id": 3,
     "name": "Dukin Vladimir",
@@ -83,6 +89,7 @@ POST      localhost:8080/cms/customers
   GET      localhost:8080/cms/contacts
 
   PUT      localhost:8080/cms/contacts/2
+  
   {
     "customer_id": 2,
     "name": "Korobeinikov Stas",
@@ -97,6 +104,7 @@ POST      localhost:8080/cms/customers
 
 
   POST      localhost:8080/cms/interactions
+  
   {
     "customer_id": 1,
     "contact_id": 1,
@@ -104,6 +112,7 @@ POST      localhost:8080/cms/customers
     "type": "payment",
     "notes": "received 2_500_000"
   }
+  
   {
     "customer_id": 1,
     "contact_id": 1,
@@ -111,6 +120,7 @@ POST      localhost:8080/cms/customers
     "type": "shipment",
     "notes": "30 kW"
   }
+  
   {
     "customer_id": 1,
     "contact_id": 3,
@@ -118,6 +128,7 @@ POST      localhost:8080/cms/customers
     "type": "shipment",
     "notes": "30 kW"
   }
+  
   {
     "customer_id": 2,
     "contact_id": 4,
@@ -125,6 +136,7 @@ POST      localhost:8080/cms/customers
     "type": "negotiations",
     "notes": "discussing future deals"
   }
+  
   {
     "customer_id": 3,
     "contact_id": 5,
@@ -140,6 +152,7 @@ POST      localhost:8080/cms/customers
   GET      localhost:8080/cms/interactions
 
   PUT      localhost:8080/cms/interactions/2
+  
   {
     "customer_id": 1,
     "contact_id": 1,

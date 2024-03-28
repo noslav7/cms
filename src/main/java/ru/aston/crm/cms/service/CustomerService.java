@@ -5,6 +5,7 @@ import ru.aston.crm.cms.model.Customer;
 import java.util.List;
 
 public interface CustomerService {
+
     List<Customer> findAll();
     Customer findById(int id);
     List<Customer> findByIndustry(String industry);

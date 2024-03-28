@@ -20,10 +20,7 @@ customer_id INT,
 name VARCHAR(255),
 type VARCHAR(255),
 details VARCHAR(255),
-preferred BOOLEAN,
-CONSTRAINT fk_customer
-     FOREIGN KEY (customer_id)
-            REFERENCES customers(customer_id)
+preferred BOOLEAN
 );
 /*
  * Description: Contact details for a customer are stored, allowing for multiple contact methods.
@@ -37,13 +34,7 @@ customer_id INT,
 contact_id INT,
 date DATE,
 type VARCHAR(255),
-notes text,
-CONSTRAINT fk_customer
-    FOREIGN KEY (customer_id)
-        REFERENCES customers(customer_id),
-CONSTRAINT fk_contact
-    FOREIGN KEY (contact_id)
-        REFERENCES contacts_info(contact_id)
+notes text
 );
 /*
  * Description: Interactions with the customer are logged, such as support calls, emails, or sales visits.

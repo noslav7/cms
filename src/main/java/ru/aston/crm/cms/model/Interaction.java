@@ -1,5 +1,6 @@
 package ru.aston.crm.cms.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
@@ -16,15 +17,20 @@ public class Interaction {
     private int interactionId;
     @Column(name = "customer_id")
     @Schema(description = "The ID of the organisation (customer) with which the interaction took place")
+    @JsonProperty("customer_id")
     private int customerId;
     @Column(name = "contact_id")
     @Schema(description = "The ID of the contact of the organisation (customer)")
+    @JsonProperty("contact_id")
     private int contactId;
     @Schema(description = "Date of the interaction")
+    @JsonProperty("date")
     private Date date;
     @Schema(description = "E.g. phone or email communication, purchase application etc.")
+    @JsonProperty("type")
     private String type;
     @Schema(description = "Details of the interaction")
+    @JsonProperty("notes")
     private String notes;
 
     public int getInteractionId() {

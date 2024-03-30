@@ -5,7 +5,9 @@ various contact data, data about interactions with the customers and the contact
 Another app, that logs data about each action of the CMS is called "stub". It's repository may be found at
 https://github.com/noslav7/stub
 
-JSONs for testing (e.g using postman)
+Applications video: https://cloud.mail.ru/public/mrkT/s4vtGTb9b
+
+URLs and JSONs for testing (e.g using postman)
 
 POST      localhost:8080/cms/customers
 
@@ -14,16 +16,19 @@ POST      localhost:8080/cms/customers
     "city": "Saint-Petersburg",
     "industry": "reselling"
   }
+  
   {
     "organisation": "UralTermoSvar",
     "city": "Yekaterinburg",
     "industry": "welding_equipment_production"
   }
+  
   {
     "organisation": "GlobalStroiIngeneering",
     "city": "Nizhnii Novgorod",
     "industry": "pipeline_petroleum_transportation"
   }
+  
   {
     "organisation": "TMZ",
     "city": "Tikhvin",

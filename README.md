@@ -44,7 +44,7 @@ POST      localhost:8080/cms/customers
     "industry": "reselling"
   }
 
-  DELETE   localhost:8080/cms/customers/3
+  DELETE   localhost:8080/cms/customers/4
 
 
 

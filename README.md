@@ -5,7 +5,7 @@ various contact data, data about interactions with the customers and the contact
 Another app, that logs data about each action of the CMS is called "stub". It's repository may be found at
 https://github.com/noslav7/stub
 
-Applications video: https://cloud.mail.ru/public/mrkT/s4vtGTb9b
+Demonstration video: https://cloud.mail.ru/public/pUGp/TMS6QppFF
 
 URLs and JSONs for testing (e.g using postman)
 

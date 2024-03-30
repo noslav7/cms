@@ -1,6 +1,8 @@
 The repository contains the application for Customer Management System (CMS). It is a part of Customer
  Management System (CRM) of an industrial enterprise, which produces industrial equipment.
-Another app, that interacts with this one is called "Stub". It's repository may be found at
+ CMS in this app represents itself as a system to collect and store data about customers (organizations in this case),
+various contact data, data about interactions with the customers and the contacts.
+Another app, that logs data about each action of the CMS is called "stub". It's repository may be found at
 https://github.com/noslav7/stub
 
 JSONs for testing (e.g using postman)

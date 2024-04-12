@@ -4,6 +4,7 @@ The repository contains the application for Customer Management System (CMS). It
 various contact data, data about interactions with the customers and the contacts.
 Another app, that logs data about each action of the CMS is called "stub". It's repository may be found at
 https://github.com/noslav7/stub
+The "cms" should send messages to the "stub" using the message broker (e.g. Kafka).
 
 Demonstration video: https://cloud.mail.ru/public/pUGp/TMS6QppFF
 

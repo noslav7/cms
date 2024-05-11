@@ -4,7 +4,13 @@ The repository contains the application for Customer Management System (CMS). It
 various contact data, data about interactions with the customers and the contacts.
 Another app, that logs data about each action of the CMS is called "stub". It's repository may be found at
 https://github.com/noslav7/stub
-The "cms" should send messages to the "stub" using the message broker (e.g. Kafka).
+The "cms" should send messages to the "stub" using the message broker.
+
+In order for "cms" and "stub" applications to run properly,
+PostgreSQL and Kafka should be installed, 
+files src/main/db/tables.sql in "cms" and "src/main/db/scripts.sql" in "stub" should be executed 
+for the necessary tables' creation,
+also the Kafka topic named "cms" should be created.
 
 Demonstration video: https://cloud.mail.ru/public/pUGp/TMS6QppFF
 

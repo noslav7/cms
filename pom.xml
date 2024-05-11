@@ -81,11 +81,6 @@
 			<version>1.10.2</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -94,18 +89,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
-				<plugin>
-					<groupId>org.liquibase</groupId>
-					<artifactId>liquibase-maven-plugin</artifactId>
-					<version>4.24.0</version>
-					<configuration>
-						<changeLogFile>src/main/resources/db/changelog/db.changelog-master.xml</changeLogFile>
-						<url>jdbc:postgresql://localhost:5432/cms</url>
-						<username>postgres</username>
-						<password>password</password>
-					</configuration>
-				</plugin>
 		</plugins>
 	</build>
 

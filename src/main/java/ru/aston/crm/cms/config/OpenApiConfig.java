@@ -11,7 +11,7 @@ public class OpenApiConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("public-apis")
-                .packagesToScan("ru.aston.crm.cms")
+                .packagesToScan("ru.aston.crm.cms", "ru.aston.crm.cms.controller")
                 .build();
     }
 }
